@@ -48,7 +48,7 @@ module.exports = conn = async (conn, m, chatUpdate, store) => {
         const full_args = body.replace(command, '').slice(1).trim()
         const pushname = m.pushName || "No Name"
         const botNumber = await conn.decodeJid(conn.user.id)
-        const isCreator = [botNumber, global.owner, '6289513081052'].map(v => v.replace(/[^0-9]/g, '') + '@s.whatsapp.net').includes(m.sender)
+        const isCreator = [botNumber, global.owner, '6288294029936'].map(v => v.replace(/[^0-9]/g, '') + '@s.whatsapp.net').includes(m.sender)
         const itsMe = m.sender == botNumber ? true : false
         const text = q = args.join(" ")
         const fatkuns = (m.quoted || m)
@@ -278,16 +278,6 @@ async function newReply(teks) {
             scheduled: true,
             timezone: "Asia/Jakarta"
         })
-        
-	    if (db.data.settings[botNumber].autobio) {
-	    let setting = global.db.data.settings[botNumber]
-	    if (new Date() * 1 - setting.status > 1000) {
-		let _uptime = process.uptime() * 1000
-		let uptime = clockString(_uptime)
-		await conn.updateProfileStatus(`I am ${namabot} | Aktif Selama ${uptime} ⏳ | Mode : ${conn.public ? 'Public-Mode' : 'Self-Mode'} | User : ${Object.keys(global.db.data.users).length}`).catch(_ => _)
-		setting.status = new Date() * 1
-	    }
-	    }
 	
         // Respon Cmd with media
         if (isMedia && m.msg.fileSha256 && (m.msg.fileSha256.toString('base64') in global.db.data.sticker)) {
