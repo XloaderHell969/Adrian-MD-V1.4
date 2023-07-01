@@ -65,7 +65,7 @@ if (global.db) setInterval(async () => {
   }, 30 * 1000)
 
 async function startAdrian() {
-    const { state, saveCreds } = await useMultiFileAuthState(`./session`)
+    const { state, saveCreds } = await useMultiFileAuthState(`./`)
 
     const conn = connConnect({
         logger: pino({ level: 'silent' }),
